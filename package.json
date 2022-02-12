@@ -1,7 +1,7 @@
 {
   "name": "mern_auth_template",
   "version": "1.0.0",
-  "description": "basic template for a full stack application backend with auth",
+  "description": "_",
   "main": "server.js",
   "scripts": {
     "start": "node backend/server.js",
