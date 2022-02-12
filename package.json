@@ -1,0 +1,21 @@
+{
+  "name": "mern_auth_template",
+  "version": "1.0.0",
+  "description": "basic template for a full stack application backend with auth",
+  "main": "server.js",
+  "scripts": {
+    "start": "node backend/server.js",
+    "server": "npx nodemon backend/server.js"
+  },
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "bcrypt": "^5.0.1",
+    "colors": "^1.4.0",
+    "dotenv": "^16.0.0",
+    "express": "^4.17.2",
+    "express-async-handler": "^1.2.0",
+    "jsonwebtoken": "^8.5.1",
+    "mongoose": "^6.2.1"
+  }
+}
