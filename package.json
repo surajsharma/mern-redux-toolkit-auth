@@ -1,6 +1,5 @@
 {
   "name": "mern_auth_template",
-  "proxy":"http://127.0.0.1:8000/",
   "version": "1.0.0",
   "description": "_",
   "main": "server.js",

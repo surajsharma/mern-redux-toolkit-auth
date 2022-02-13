@@ -1,9 +1,5 @@
 const express  = require('express');
 
-
-const { OAuth2Client } = require('google-auth-library');
-
-
 const colors = require('colors');
 const dotenv = require('dotenv').config();
 
@@ -19,7 +15,6 @@ const port = process.env.PORT||5000;
 
 connectDB();
 const app = express();
-const client = new OAuth2Client(process.env.REACT_APP_GOOGLE_CLIENT_ID);
 
 
 app.use(express.json());
