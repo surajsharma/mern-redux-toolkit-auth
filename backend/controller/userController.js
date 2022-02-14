@@ -49,7 +49,7 @@ const registerUser = asyncHandler(async(req, res) => {
     console.log(name, email, password, ssn);
     
     if(!name || !email || !password){
-        //dob optional
+        //ssn optional
         res.status(404);
         throw new Error('Please add all fields');
     }
