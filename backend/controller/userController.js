@@ -46,6 +46,7 @@ const loginUser = asyncHandler(async(req, res) => {
 //@access   public
 const registerUser = asyncHandler(async(req, res) => {
     const {name, email, password, ssn} = req.body;
+    
     console.log(name, email, password, ssn);
     
     if(!name || !email || !password){

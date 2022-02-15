@@ -17,7 +17,6 @@ const userSchema = mongoose.Schema(
         },
         ssn: {
             type: String,
-            required: [true, "Please add a ssn"],
         },
     },
     {

@@ -1,4 +1,4 @@
-import { useState, useEffect } from "react";
+import { useState } from "react";
 import { FaSignInAlt } from "react-icons/fa";
 
 function Login() {
