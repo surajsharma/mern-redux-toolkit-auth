@@ -18,11 +18,11 @@ function Login() {
 
     useEffect(() => {
         if (isError) {
-            if(message.includes("400")){
+            if (message.includes("400")) {
                 toast.error("Invalid Credentials");
-                return;
+            } else {
+                toast.error(message);
             }
-            toast.error(message);
         }
 
         if (isSuccess || user) {
