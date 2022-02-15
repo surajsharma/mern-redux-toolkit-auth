@@ -1,7 +1,37 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
+import { toast } from "react-toastify";
+import { useNavigate } from "react-router-dom";
+
+import { logIn, reset } from "../features/auth/authSlice";
+import { useSelector, useDispatch } from "react-redux";
+
 import { FaSignInAlt } from "react-icons/fa";
+import Spinner from "../components/Spinner";
 
 function Login() {
+    const navigate = useNavigate();
+    const dispatch = useDispatch();
+
+    const { user, isLoading, isError, isSuccess, message } = useSelector(
+        (state) => state.auth
+    );
+
+    useEffect(() => {
+        if (isError) {
+            if(message.includes("400")){
+                toast.error("Invalid Credentials");
+                return;
+            }
+            toast.error(message);
+        }
+
+        if (isSuccess || user) {
+            navigate("/");
+        }
+
+        dispatch(reset());
+    }, [user, message, isError, isSuccess, navigate, dispatch]);
+
     const [formData, setFormData] = useState({
         email: "",
         password: "",
@@ -18,14 +48,22 @@ function Login() {
 
     const onSubmit = (e) => {
         e.preventDefault();
+        if (!password || !email) {
+            toast.error("Please enter email and password!");
+        } else {
+            const userData = {
+                email,
+                password,
+            };
+            dispatch(logIn(userData));
+        }
     };
 
     return (
         <>
             <section className="heading">
                 <h1>
-                    <FaSignInAlt />{' '}
-                    Login
+                    <FaSignInAlt /> Login
                 </h1>
                 <p>Login and start setting goals</p>
             </section>
@@ -55,9 +93,13 @@ function Login() {
                         />
                     </div>
                     <div className="form-group">
-                        <button type="submit" className="btn btn-block">
-                            Submit
-                        </button>
+                        {isLoading ? (
+                            <Spinner />
+                        ) : (
+                            <button type="submit" className="btn btn-block">
+                                Submit
+                            </button>
+                        )}
                     </div>
                 </form>
             </section>
