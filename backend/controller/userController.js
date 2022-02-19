@@ -8,15 +8,8 @@ const User = require('../models/user');
 //@route    GET /api/users/me
 //@access   private
 const getMe = asyncHandler(async(req, res) => {
-    const {_id, name, email, ssn} = await User.findById(req.user.id);
-
-    return res.status(200).json({
-        id:_id,
-        name:name, 
-        email:email,
-        ssn:ssn
-    })
-
+    // const {_id, name, email, ssn} = await User.findById(req.user.id);
+    return res.status(200).json(req.user)
 })
 
 //@desc     Authenticate a user
